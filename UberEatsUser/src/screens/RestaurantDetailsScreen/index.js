@@ -1,16 +1,19 @@
-import { Image, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import styles from "./style";
 import restaurants from "../../../assets/data/restaurants.json";
+import DishListItem from "../../components/DishListItem";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const restaurant = restaurants[0];
 
 const RestaurantDetailsScreen = () => {
   return (
     <View style={styles.page}>
-      <Image
-        source={{ uri: restaurant.image }}
-        style={styles.image}
+      <FlatList
+        ListHeaderComponent={() => <Header restaurant={restaurant} />}
+        data={restaurant.dishes}
+        renderItem={({ item }) => <DishListItem dish={item} />}
       />
       <Ionicons
         name='arrow-back-circle'
@@ -18,13 +21,6 @@ const RestaurantDetailsScreen = () => {
         color='white'
         style={styles.iconContainer}
       />
-      <View style={styles.container}>
-        <Text style={styles.title}>{restaurant.name}</Text>
-        <Text style={styles.subtitle}>
-          ${restaurant.deliveryFee} &#8226; {restaurant.minDeliveryTime}-
-          {restaurant.maxDeliveryTime} minutes
-        </Text>
-      </View>
     </View>
   );
 };

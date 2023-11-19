@@ -14,16 +14,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   subtitle: {
-    color: "grey",
+    color: "#525252",
     fontSize: 15,
   },
   container: {
     margin: 10,
   },
+
   iconContainer: {
     position: "absolute",
     top: 40,
     left: 10,
+  },
+  menuTitle: {
+    marginTop: 20,
+    fontSize: 18,
+    letterSpacing: 0.7,
   },
 });
 
